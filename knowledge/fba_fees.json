@@ -1,0 +1,167 @@
+{
+  "fee_structure_2024": {
+    "last_updated": "2024-01-26",
+    "referral_fees": {
+      "standard_rate": 0.15,
+      "categories": {
+        "Amazon Device Accessories": 0.20,
+        "Automotive & Powersports": 0.12,
+        "Baby Products": 0.15,
+        "Beauty": 0.15,
+        "Books": 0.15,
+        "Camera & Photo": 0.08,
+        "Cell Phones & Accessories": 0.08,
+        "Clothing & Accessories": 0.17,
+        "Computers": 0.08,
+        "Consumer Electronics": 0.08,
+        "Electronics Accessories": 0.15,
+        "Furniture": 0.15,
+        "Grocery & Gourmet Food": 0.08,
+        "Health & Personal Care": 0.15,
+        "Home & Garden": 0.15,
+        "Home & Kitchen": 0.15,
+        "Industrial & Scientific": 0.12,
+        "Jewelry": 0.20,
+        "Kitchen & Dining": 0.15,
+        "Musical Instruments": 0.15,
+        "Office Products": 0.15,
+        "Outdoors": 0.15,
+        "Pet Supplies": 0.15,
+        "Sports": 0.15,
+        "Sports & Outdoors": 0.15,
+        "Tools & Home Improvement": 0.15,
+        "Toys & Games": 0.15,
+        "Video Games": 0.15,
+        "Watches": 0.16
+      },
+      "special_rules": {
+        "Beauty": {
+          "condition": "items_under_10",
+          "rate": 0.08
+        },
+        "Grocery": {
+          "condition": "items_under_15",
+          "rate": 0.15
+        }
+      }
+    },
+    "fba_fulfillment_fees": {
+      "small_standard": {
+        "max_weight_oz": 16,
+        "tiers": [
+          {"max_oz": 4, "fee": 3.22},
+          {"max_oz": 8, "fee": 3.40},
+          {"max_oz": 12, "fee": 3.58},
+          {"max_oz": 16, "fee": 3.77}
+        ]
+      },
+      "large_standard": {
+        "max_weight_lb": 20,
+        "tiers": [
+          {"max_lb": 0.75, "fee": 3.86},
+          {"max_lb": 1, "fee": 4.08},
+          {"max_lb": 1.5, "fee": 4.24},
+          {"max_lb": 2, "fee": 4.75},
+          {"max_lb": 2.5, "fee": 5.07},
+          {"max_lb": 3, "fee": 5.40},
+          {"above_3_lb": true, "base_fee": 5.40, "per_lb": 0.32}
+        ]
+      },
+      "small_oversize": {
+        "max_weight_lb": 70,
+        "base_fee": 9.73,
+        "per_lb_above_2": 0.42
+      },
+      "medium_oversize": {
+        "max_weight_lb": 150,
+        "base_fee": 17.94,
+        "per_lb_above_2": 0.42
+      },
+      "large_oversize": {
+        "max_weight_lb": 150,
+        "base_fee": 89.98,
+        "per_lb_above_90": 0.83
+      },
+      "special_oversize": {
+        "min_weight_lb": 150,
+        "base_fee": 158.49,
+        "per_lb_above_90": 0.83
+      }
+    },
+    "storage_fees": {
+      "standard_size": {
+        "jan_sep_per_cubic_foot": 0.87,
+        "oct_dec_per_cubic_foot": 2.40
+      },
+      "oversize": {
+        "jan_sep_per_cubic_foot": 0.56,
+        "oct_dec_per_cubic_foot": 1.40
+      },
+      "long_term_storage": {
+        "days_365_plus": {
+          "per_cubic_foot": 6.90,
+          "minimum_per_unit": 0.15
+        }
+      }
+    },
+    "size_tiers": {
+      "small_standard": {
+        "max_dimensions": {
+          "length_in": 15,
+          "width_in": 12,
+          "height_in": 0.75,
+          "weight_oz": 16
+        }
+      },
+      "large_standard": {
+        "max_dimensions": {
+          "length_in": 18,
+          "width_in": 14,
+          "height_in": 8,
+          "weight_lb": 20
+        }
+      },
+      "oversize_thresholds": {
+        "small": {
+          "max_length_in": 60,
+          "max_length_plus_girth_in": 130,
+          "max_weight_lb": 70
+        },
+        "medium": {
+          "max_length_in": 108,
+          "max_length_plus_girth_in": 130,
+          "max_weight_lb": 150
+        },
+        "large": {
+          "max_length_in": 108,
+          "max_length_plus_girth_in": 165,
+          "max_weight_lb": 150
+        },
+        "special": {
+          "exceeds_large": true
+        }
+      }
+    },
+    "additional_fees": {
+      "removal_order": {
+        "standard_size": 0.97,
+        "oversize": 2.50
+      },
+      "return_processing": {
+        "standard_size": "free",
+        "oversize": "varies"
+      },
+      "unplanned_service": {
+        "standard_size": 0.75,
+        "oversize": 1.60
+      }
+    },
+    "formulas": {
+      "net_profit": "Selling Price - Product Cost - Total Amazon Fees",
+      "profit_margin": "(Net Profit / Selling Price) × 100",
+      "roi": "(Net Profit / Product Cost) × 100",
+      "break_even": "Fixed Costs / (Selling Price - Variable Costs)",
+      "total_fees": "Referral Fee + FBA Fee + Monthly Storage"
+    }
+  }
+}
