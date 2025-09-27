@@ -16,23 +16,21 @@
 - [x] API specification prepared (`actions/sellersprite_api.yaml`)
 - [x] All disclaimers and source attributions added
 
-### 🔄 Pending Items
-- [ ] SellerSprite account creation
-- [ ] API key generation
-- [ ] API integration testing
+### 📝 API Status Update
+- ❌ No free BSR API available (confirmed January 2024)
+- ✅ Knowledge-based estimates ready with disclaimers
+- ✅ Transparency approach implemented
 
 ## 🚀 Deployment Steps
 
-### Step 1: SellerSprite API Setup
-1. **Sign up for SellerSprite account**
-   - URL: https://www.sellersprite.com/w/user/signup
-   - Choose appropriate plan (Free tier available)
+### Step 1: ~~API Setup~~ (Not Required)
+**UPDATE**: No free BSR APIs exist. We're using knowledge-based estimates with full transparency.
 
-2. **Generate API key**
-   - Navigate to account dashboard
-   - Find API settings/Developer section
-   - Generate new API key
-   - Copy and save securely
+**Optional**: If users want to pay for API access:
+- Keepa API: ~$50/month
+- Jungle Scout API: $49+/month
+- Helium 10 API: Variable pricing
+- Users can bring their own API key
 
 ### Step 2: Create GPT in OpenAI Platform
 1. **Go to OpenAI GPT Builder**
@@ -59,15 +57,12 @@ Upload the following files in this order:
 7. `knowledge/test_scenarios.md` - Test cases
 8. `knowledge/phase2_test_scenarios.md` - Additional tests
 
-### Step 5: Configure Actions (API)
-1. **Click "Create new action"**
-2. **Import OpenAPI schema**
-   - Copy contents from: `actions/sellersprite_api.yaml`
-   - Paste into schema editor
-3. **Configure Authentication**
-   - Type: API Key
-   - Header name: `X-API-Key`
-   - Add your SellerSprite API key
+### Step 5: ~~Configure Actions~~ (Skip for Now)
+**No API configuration needed** - using knowledge files only.
+
+**Note**: The `actions/sellersprite_api.yaml` file is kept in case:
+- User wants to pay for API access
+- Free tier becomes available in future
 
 ### Step 6: Configure Capabilities
 Enable the following:
@@ -113,7 +108,7 @@ Add these starter prompts:
 ### Transparency
 - [ ] Every analysis shows data sources
 - [ ] Confidence levels displayed (🟢🟡🔴)
-- [ ] API vs estimate clearly distinguished
+- [ ] All BSR data clearly marked as estimates (±30%)
 - [ ] Limitations acknowledged
 
 ### User Experience
@@ -138,7 +133,7 @@ Add these starter prompts:
 
 ### Ongoing
 - Keep fee tables updated quarterly
-- Monitor SellerSprite API changes
+- Monitor for any new free API options
 - Improve BSR estimates
 - Expand category coverage
 
@@ -161,16 +156,16 @@ Add these starter prompts:
 1. **Transparency is Core**: Never compromise on honest data disclosure
 2. **User Trust**: Better to admit limitations than fake precision
 3. **Continuous Improvement**: Regular updates based on feedback
-4. **API Monitoring**: Check SellerSprite API status regularly
+4. **Honesty First**: Always disclose we use estimates, not real-time data
 5. **Fee Updates**: Amazon changes fees quarterly - stay current
 
 ## 🆘 Troubleshooting
 
-### If API calls fail:
-- Verify API key is correct
-- Check rate limits
-- Confirm account status
-- Fall back to estimates with clear disclaimer
+### If users ask about real-time data:
+- Explain no free APIs exist
+- Show our ±30% accuracy disclaimer
+- Suggest paid tools if they need precision
+- Emphasize our transparency approach
 
 ### If calculations seem wrong:
 - Review fee tables for updates
@@ -180,7 +175,7 @@ Add these starter prompts:
 
 ### If users complain about accuracy:
 - Emphasize estimates vs real data
-- Suggest API integration for better data
+- Suggest paid tools (Keepa, Jungle Scout) for better data
 - Point to official Amazon tools for verification
 - Maintain transparency commitment
 
@@ -189,7 +184,7 @@ Add these starter prompts:
 Before going live:
 - [ ] All knowledge files uploaded
 - [ ] Instructions properly formatted
-- [ ] API configured (when available)
+- [ ] Knowledge files provide BSR estimates
 - [ ] Test scenarios pass
 - [ ] Transparency messaging clear
 - [ ] Revenue sharing enabled
