@@ -1,5 +1,19 @@
 # BSR to Sales Estimation Guide
 
+## ⚠️ IMPORTANT DISCLAIMER
+
+**These are ESTIMATES based on aggregated industry data, NOT real-time information.**
+- Accuracy: ±30% variance is common
+- Source: Historical seller reports and tool aggregations
+- Age of data: Compiled from 2023-2024 observations
+- Real sales can vary significantly based on:
+  - Recent algorithm changes
+  - Seasonal fluctuations
+  - Promotional activities
+  - Competition changes
+
+**For real-time data**: Integration with SellerSprite API or similar services required.
+
 ## 📊 How BSR Works
 
 **BSR (Best Sellers Rank)** indicates a product's sales performance relative to others in its category. Lower numbers = more sales.
@@ -11,7 +25,9 @@
 - Seasonal items have volatile BSRs
 - New products may not have BSR yet
 
-## 🎯 BSR to Monthly Sales Conversion Tables
+## 🎯 BSR to Monthly Sales Conversion Tables (ESTIMATES)
+
+**Remember**: These are industry estimates, not guaranteed figures.
 
 ### Home & Kitchen
 | BSR Range | Est. Monthly Sales | Confidence |

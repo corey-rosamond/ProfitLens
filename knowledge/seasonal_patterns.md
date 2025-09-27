@@ -1,6 +1,24 @@
 # Seasonal Patterns & Demand Forecasting
 
-## ⚠️ Current Issue: Oversimplified Multipliers
+## 🔴 CRITICAL DISCLAIMER
+
+**These are HISTORICAL PATTERNS, not predictions or guarantees.**
+- Source: Aggregated category trends from 2022-2024
+- Accuracy: General patterns only - individual products vary WIDELY
+- Limitations: Cannot account for:
+  - Current events
+  - Economic changes
+  - Trend shifts
+  - Marketing impacts
+  - Competition changes
+
+**NEVER base inventory decisions solely on these patterns.**
+
+## ⚠️ Transparency About Our Approach
+
+**Previous Issue**: Used oversimplified multipliers (2x, 1.5x)
+**Current Approach**: Category-specific monthly indices
+**Still Limited**: These remain estimates based on past patterns
 
 **Current approach**: Fixed multipliers (2x, 1.5x, etc.)
 **Problem**: Real seasonality varies dramatically by specific product

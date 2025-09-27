@@ -1,6 +1,18 @@
 # Competition Assessment Guide
 
-## 🎯 Competition Levels Defined
+## 📢 Transparency Notice
+
+**This guide provides HEURISTIC-BASED assessments, not real-time market data.**
+- Based on: Experienced seller observations and patterns
+- NOT: Live competitor analysis or current market data
+- Accuracy: General guidelines that may not apply to specific products
+- Purpose: Educational framework for understanding competition
+
+**For actual competition data**: Manual research on Amazon or paid tools required.
+
+## 🎯 Competition Levels Defined (Guidelines, Not Rules)
+
+**Note**: These are typical patterns, not guarantees. Your specific product may differ significantly.
 
 ### LOW Competition 🟢
 **Ideal for beginners and new sellers**
