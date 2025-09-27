@@ -1,0 +1,309 @@
+openapi: 3.0.0
+info:
+  title: SellerSprite Sales Estimator API
+  description: Real-time BSR to sales conversion for Amazon products
+  version: 1.0.0
+  contact:
+    name: SellerSprite Support
+    url: https://www.sellersprite.com
+
+servers:
+  - url: https://api.sellersprite.com/v1
+    description: SellerSprite API Production Server
+
+security:
+  - ApiKeyAuth: []
+
+paths:
+  /sales-estimator:
+    post:
+      summary: Convert BSR to estimated sales
+      description: Provides monthly and daily sales estimates based on Best Sellers Rank
+      operationId: estimateSales
+      tags:
+        - Sales Estimation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - marketplace
+                - category
+                - bsr
+              properties:
+                marketplace:
+                  type: string
+                  enum: [US, UK, DE, FR, IT, ES, JP, CA, AU, IN, MX]
+                  description: Amazon marketplace
+                  example: US
+                category:
+                  type: string
+                  description: Amazon product category
+                  example: "Home & Kitchen"
+                bsr:
+                  type: integer
+                  minimum: 1
+                  description: Best Sellers Rank
+                  example: 5000
+                subcategory:
+                  type: string
+                  description: Optional subcategory for more accuracy
+                  example: "Kitchen & Dining"
+      responses:
+        '200':
+          description: Successful sales estimation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    type: object
+                    properties:
+                      bsr:
+                        type: integer
+                        example: 5000
+                      category:
+                        type: string
+                        example: "Home & Kitchen"
+                      marketplace:
+                        type: string
+                        example: US
+                      estimates:
+                        type: object
+                        properties:
+                          monthly_sales:
+                            type: object
+                            properties:
+                              min:
+                                type: integer
+                                example: 280
+                              max:
+                                type: integer
+                                example: 350
+                              average:
+                                type: integer
+                                example: 315
+                          daily_sales:
+                            type: object
+                            properties:
+                              min:
+                                type: number
+                                format: float
+                                example: 9.3
+                              max:
+                                type: number
+                                format: float
+                                example: 11.7
+                              average:
+                                type: number
+                                format: float
+                                example: 10.5
+                      confidence:
+                        type: string
+                        enum: [high, medium, low]
+                        description: Confidence level of the estimate
+                        example: high
+                      last_updated:
+                        type: string
+                        format: date-time
+                        example: "2024-01-26T10:30:00Z"
+                      seasonal_factor:
+                        type: number
+                        format: float
+                        description: Current seasonal adjustment factor
+                        example: 1.2
+        '400':
+          description: Bad request - Invalid parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: "Invalid category provided"
+                  code:
+                    type: string
+                    example: "INVALID_CATEGORY"
+        '401':
+          description: Unauthorized - Invalid or missing API key
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: "Invalid API key"
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: "Rate limit exceeded. Please try again later."
+                  retry_after:
+                    type: integer
+                    description: Seconds to wait before retry
+                    example: 60
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: "An unexpected error occurred"
+
+  /categories:
+    get:
+      summary: Get available categories
+      description: Returns list of supported Amazon categories for the specified marketplace
+      operationId: getCategories
+      tags:
+        - Reference Data
+      parameters:
+        - name: marketplace
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [US, UK, DE, FR, IT, ES, JP, CA, AU, IN, MX]
+          description: Amazon marketplace
+      responses:
+        '200':
+          description: List of available categories
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    type: object
+                    properties:
+                      marketplace:
+                        type: string
+                        example: US
+                      categories:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              example: "Home & Kitchen"
+                            id:
+                              type: string
+                              example: "home-garden"
+                            subcategories:
+                              type: array
+                              items:
+                                type: string
+                              example: ["Kitchen & Dining", "Bedding", "Bath"]
+
+  /marketplace-trends:
+    get:
+      summary: Get marketplace trends
+      description: Returns current trends and seasonal factors for a category
+      operationId: getMarketplaceTrends
+      tags:
+        - Market Intelligence
+      parameters:
+        - name: marketplace
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [US, UK, DE, FR, IT, ES, JP, CA, AU, IN, MX]
+        - name: category
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Marketplace trend data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    type: object
+                    properties:
+                      category:
+                        type: string
+                        example: "Toys & Games"
+                      current_seasonal_index:
+                        type: number
+                        format: float
+                        example: 2.2
+                      trend:
+                        type: string
+                        enum: [growing, stable, declining]
+                        example: growing
+                      peak_months:
+                        type: array
+                        items:
+                          type: string
+                        example: ["November", "December"]
+                      market_insights:
+                        type: string
+                        example: "Holiday season approaching, expect 2-3x normal demand"
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key obtained from SellerSprite dashboard
+
+  schemas:
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+        code:
+          type: string
+
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true
+  samples-languages:
+    - python
+    - javascript
+    - curl
